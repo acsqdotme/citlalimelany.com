@@ -2,13 +2,13 @@
 
 features:
 
-todo:
-
 * golang http server
 
-* bbolt image server
-
 * templating engine for html
+
+todo:
+
+* bbolt image server
 
 * make it look cool
 
