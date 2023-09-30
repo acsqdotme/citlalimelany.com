@@ -23,9 +23,13 @@
     </main>
     <footer>
       {{ block "footer" . }}
-      <p>footer</p>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
       {{ end }}
-    </footer>  
+    </footer>
   </body>
 </html>
 {{ end }}
