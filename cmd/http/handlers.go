@@ -12,6 +12,7 @@ import (
 
 const (
 	htmlDir     = "./html"
+	staticDir   = "./static"
 	tmplFileExt = ".tmpl.html"
 )
 
@@ -64,4 +65,8 @@ func pageHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	tmpl.ExecuteTemplate(w, "base", nil)
+}
+
+func faviconHandler(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, filepath.Join(staticDir, "favicon.ico"))
 }
