@@ -4,9 +4,14 @@ import (
 	"flag"
 	"log"
 	"net/http"
+
+	"citlalimelany.com/album"
 )
 
 func main() {
+	if err := album.MakeDB(); err != nil {
+		log.Fatal(err)
+	}
 	addr := flag.String("addr", ":4001", "HTTP Server Port Address")
 	flag.Parse()
 
