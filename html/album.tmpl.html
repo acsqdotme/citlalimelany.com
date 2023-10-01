@@ -1,0 +1,14 @@
+{{ define "title" }}{{ .Album.Title }}{{ end }}
+{{ define "description" }}{{ .Album.Description }}{{ end }}
+
+{{ define "main" }}
+<h2>{{ .Album.Title }}</h2>
+
+<p>{{ .Album.Description }}</p>
+
+  {{ range .Album.Photos }}
+  <figure>
+    <img src="{{ .Src }}" alt="{{ .Alt }}" title="{{ .Title }}">
+  </figure>
+  {{ end }}
+{{ end }}
