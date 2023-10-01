@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"log"
+	"sort"
 
 	bolt "go.etcd.io/bbolt"
 )
@@ -107,4 +108,30 @@ func DoesAlbumExist(key string) (exists bool, err error) {
 	})
 
 	return exists, err
+}
+
+func AggregateAlbums() (albums []Album, err error) {
+	db := openDB()
+	defer closeDB(db)
+
+	err = db.View(func(tx *bolt.Tx) error {
+		b := tx.Bucket(portBucket)
+		err = b.ForEach(func(k, v []byte) error {
+			var a Album
+			if err = json.Unmarshal(v, &a); err != nil {
+				return err
+			}
+			albums = append(albums, a)
+			return nil
+		})
+		return err
+	})
+	if err != nil {
+		return []Album{}, err
+	}
+
+	sort.Slice(albums, func(i, j int) bool {
+		return albums[i].Date > albums[j].Date
+	})
+	return albums, nil
 }
