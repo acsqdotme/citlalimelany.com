@@ -3,4 +3,14 @@
 
 {{ define "main" }}
 <p>Home page <a href="/about">about</a></p>
+
+<p>My collections:</p>
+
+{{ range .Albums }}
+<figure>
+  <img src="{{ .Thumbnail.Src }}" alt="{{ .Thumbnail.Alt}}" title="{{ .Thumbnail.Title}}" >
+  <figcaption>{{ .Name }}</figcaption>
+</figure>
+
+{{ end }}
 {{ end }}
