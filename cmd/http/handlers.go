@@ -8,6 +8,8 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+
+	"citlalimelany.com/album"
 )
 
 const (
@@ -64,7 +66,16 @@ func pageHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	tmpl.ExecuteTemplate(w, "base", nil)
+	data := make(map[string]interface{})
+	data["Path"] = r.URL.Path
+	albums, err := album.AggregateAlbums()
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+	data["Albums"] = albums
+	data["Album"] = albums[0]
+
+	tmpl.ExecuteTemplate(w, "base", data)
 }
 
 func faviconHandler(w http.ResponseWriter, r *http.Request) {
