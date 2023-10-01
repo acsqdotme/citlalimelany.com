@@ -59,7 +59,7 @@ func MakeDB() error {
 	return err
 }
 
-func AddToDB(key string, album Album) error {
+func AddToDB(album Album) error {
 	jason, err := json.Marshal(album)
 	if err != nil {
 		return err
@@ -70,11 +70,11 @@ func AddToDB(key string, album Album) error {
 
 	err = db.Update(func(tx *bolt.Tx) error {
 		b := tx.Bucket(portBucket)
-		v := b.Get([]byte(key))
+		v := b.Get([]byte(album.FileName))
 		if v != nil {
-			return errors.New("key " + key + " already exists!")
+			return errors.New("key " + album.FileName + " already exists!")
 		}
-		err := b.Put([]byte(key), jason)
+		err := b.Put([]byte(album.FileName), jason)
 		return err
 	})
 
