@@ -136,3 +136,32 @@ func AggregateAlbums() (albums []Album, err error) {
 	})
 	return albums, nil
 }
+
+func TestAlbum() (a Album) {
+	a.FileName = "bjork"
+	a.Title = "Björk Collection"
+	a.Date = "2023-09-30"
+	a.Description = "epic pics of björk"
+	a.Thumbnail = Img{
+		Src:   "https://www.newyorker.com/wp-content/uploads/2004/08/040823_r13315-967.jpg",
+		Alt:   "Bjork with cool, asymmetric ponytail",
+		Title: "bachelorette is her best song btw",
+	}
+	a.Photos = []Img{
+		{
+			Src:   "https://celebs-place.com/gallery/bjork/2-45.jpg",
+			Alt:   "Björk forlornly dreaming",
+			Title: "awesome hair",
+		}, {
+			Src:   "https://cdn.theatlantic.com/assets/media/img/mt/2013/11/bjork/lead_large.jpg",
+			Alt:   "bjork and a tv",
+			Title: "'You shouldn't let poets lie to you'",
+		}, {
+			Src: "https://townsquare.media/site/838/files/2016/01/bjork-boombox.jpg?w=1200&h=0&zc=1&s=0&a=t&q=89",
+			Alt: "bjork with a boom box",
+			// testing no title
+		},
+	}
+
+	return a
+}
