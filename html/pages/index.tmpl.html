@@ -8,10 +8,10 @@
 
 {{ range .Albums }}
 <figure>
-  <a href="/album/{{ .Name }}">
+  <a href="/album/{{ .FileName }}">
     <img src="{{ .Thumbnail.Src }}" alt="{{ .Thumbnail.Alt }}" title="{{ .Thumbnail.Title }}" >
   </a>
-  <figcaption>{{ .Name }}</figcaption>
+  <figcaption>{{ .Title }}</figcaption>
 </figure>
 {{ end }}
 

@@ -18,7 +18,8 @@ var (
 )
 
 type Album struct {
-	Name        string `json:"name"`
+	FileName    string `json:"filename"`
+	Title       string `json:"title"`
 	Date        string `json:"date"`
 	Description string `json:"description"`
 	Thumbnail   Img    `json:"thumbnail"`
