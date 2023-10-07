@@ -14,6 +14,8 @@ todo:
 
 * some fancy javascript to make it look cool
 
+* add contact form
+
 license:
 
 The code for this site is under the GPLv3. Check [`LICENSE`](./LICENSE) for
