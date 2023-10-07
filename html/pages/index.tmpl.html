@@ -3,20 +3,36 @@
 {{ define "header" }}<!--No header-->{{ end }}
 
 {{ define "main" }}
-<figure>
-  <img src="/static/img/senior_pic.webp" alt="me at my local swamp">
-</figure>
-<h1>Citlali Melany Carbajal-Castañeda</h1>
+<section id="home">
+  <nav class="right">
+    <a href="#home">Home</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-<p>My collections:</p>
+  <h1>Citlali Melany <br> Carbajal-Castañeda</h1>
+</section>
 
-{{ range .Albums }}
-<figure>
-  <a href="/album/{{ .FileName }}">
-    <img src="{{ .Thumbnail.Src }}" alt="{{ .Thumbnail.Alt }}" title="{{ .Thumbnail.Title }}" >
-  </a>
-  <figcaption>{{ .Title }}</figcaption>
-</figure>
-{{ end }}
+<section id="portfolio">
+  <p>My collections:</p>
 
+  {{ range .Albums }}
+  <figure>
+    <a href="/album/{{ .FileName }}">
+      <img src="{{ .Thumbnail.Src }}" alt="{{ .Thumbnail.Alt }}" title="{{ .Thumbnail.Title }}" >
+    </a>
+    <figcaption>{{ .Title }}</figcaption>
+  </figure>
+  {{ end }}
+</section>
+
+<section id="about">
+
+
+</section>
+
+<section id="contact">
+
+</section>
 {{ end }}
