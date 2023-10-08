@@ -47,5 +47,18 @@
       @artdesigns.by.citlali.melany
     </a>
   </address>
+
+  <form action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="{{ .Email_API }}">
+    <input type="hidden" name="subject" value="Contact Me Form Submission">
+    <input type="hidden" name="from_name" value="Contact Form">
+    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="your@email.com" required />
+    <textarea rows="6" name="message" placeholder="Your Message"></textarea>
+    <div class="h-captcha" data-captcha="true"></div>
+    <button type="submit">Submit</button>
+  </form>
+  <script src="https://web3forms.com/client/script.js" async defer></script>
 </section>
 {{ end }}

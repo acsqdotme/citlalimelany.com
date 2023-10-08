@@ -6,6 +6,8 @@ features:
 
 * templating engine for html
 
+* contact form with [Web3Forms](https://web3forms.com/)
+
 todo:
 
 * bbolt image server
@@ -13,8 +15,6 @@ todo:
 * make it look cool
 
 * some fancy javascript to make it look cool
-
-* add contact form
 
 license:
 
