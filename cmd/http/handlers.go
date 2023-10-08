@@ -41,6 +41,19 @@ func bindTMPL(files ...string) (*template.Template, error) {
 	return tmpl, nil
 }
 
+func apiGetter() string {
+	fileBytes, err := os.ReadFile(filepath.Join("./email-api.txt"))
+	if err != nil {
+		log.Println("API key can't be read")
+		return ""
+	}
+	fileString := string(fileBytes)
+
+	cleanedString := strings.ReplaceAll(fileString, "\r", "")
+	cleanedString = strings.ReplaceAll(fileString, "\n", "")
+	return cleanedString
+}
+
 func pageHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 
@@ -74,6 +87,7 @@ func pageHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	data["Albums"] = albums
 	data["Album"] = albums[0]
+	data["Email_API"] = apiGetter()
 
 	tmpl.ExecuteTemplate(w, "base", data)
 }
