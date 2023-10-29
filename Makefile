@@ -13,10 +13,15 @@ vet: fmt
 	go vet $(db)
 .PHONY:vet
 
-run: vet
+lint: vet
+	golint $(http)
+	golint $(db)
+.PHONY:vet
+
+run: lint
 	go run $(http)
 .PHONY:run
 
-build: 
+build:
 	go build $(http)
 .PHONY:build
